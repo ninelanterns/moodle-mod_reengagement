@@ -56,7 +56,7 @@ class mod_reengagement_mod_form extends moodleform_mod {
         }
 
         $istotara = false;
-        if (file_exists($CFG->wwwroot.'/totara/hierarchy')) {
+        if (file_exists($CFG->dirroot.'/totara/hierarchy')) {
             $istotara = true;
         }
 
