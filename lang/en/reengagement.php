@@ -25,7 +25,7 @@
 
 $string['pluginname'] = 'Reengagement';
 $string['reengagement'] = 'reengagement';
-$string['pluginadministration'] = '';
+$string['pluginadministration'] = 'Reengagement administration';
 $string['modulename'] = 'Reengagement';
 $string['modulenameplural'] = 'Reengagements';
 
