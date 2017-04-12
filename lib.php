@@ -397,8 +397,9 @@ function reengagement_email_user($reengagement, $inprogress) {
                         manager.lastname as mlastname, manager.email as memail,
                         manager.mailformat as mmailformat
                   FROM {user} u
-             LEFT JOIN {pos_assignment} pa ON u.id = pa.userid and pa.type = " . POSITION_TYPE_PRIMARY . "
-             LEFT JOIN {user} manager ON pa.managerid = manager.id
+             LEFT JOIN {job_assignment} assignment ON (u.id = assignment.userid and assignment.sortorder = 1)
+             LEFT JOIN {job_assignment} managerassignment ON (managerassignment.id = assignment.managerjaid)
+             LEFT JOIN {user} manager ON (manager.id = managerassignment.userid)
                  WHERE u.id = :userid";
         $params = array('userid' => $inprogress->userid);
         $user = $DB->get_record_sql($usersql, $params);
