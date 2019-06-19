@@ -428,12 +428,13 @@ function reengagement_email_user($reengagement, $inprogress) {
                         manager.lastname as mlastname, manager.email as memail,
                         manager.mailformat as mmailformat
                   FROM {user} u
-             LEFT JOIN {pos_assignment} pa ON u.id = pa.userid and pa.type = " . POSITION_TYPE_PRIMARY . "
-             LEFT JOIN {user} manager ON pa.managerid = manager.id
+             LEFT JOIN {job_assignment} ja ON u.id = ja.userid
+             LEFT JOIN {job_assignment} manager_ja ON ja.managerjaid = manager_ja.id
+			 LEFT JOIN {user} manager ON manager.id = manager_ja.userid
                  WHERE u.id = :userid";
+
         $params = array('userid' => $inprogress->userid);
         $user = $DB->get_record_sql($usersql, $params);
-
     } else {
         $user = $DB->get_record('user', array('id' => $inprogress->userid));
     }
