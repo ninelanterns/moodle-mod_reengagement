@@ -162,7 +162,7 @@ function reengagement_user_complete($course, $user, $mod, $reengagement) {
 function reengagement_get_completion_state($course, $cm, $userid, $type) {
     global $DB;
     if ($completion = $DB->get_record('course_modules_completion', array('coursemoduleid' => $cm->id, 'userid' => $userid))) {
-        return $completion->completionstate == COMPLETION_COMPLETE_PASS;
+        return $completion->completionstate == COMPLETION_COMPLETE;
     }
     return false;
 }
